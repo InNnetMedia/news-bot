@@ -53,10 +53,11 @@ const topStories = async (url,filename) => {
         return { imgURL, title, date, link };
     })
 
-    await fsPromises.writeFile(path.join(__dirname,'..','news', 'enca', filename),JSON.stringify({ newsData, cardData }));
     console.log(cardData)
     await browser.close();
     await eventLogger(`${url}`, 'botProgress.txt');
+    
+    return { newsData, cardData }
 };
 
 

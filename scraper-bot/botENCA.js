@@ -11,7 +11,7 @@ const loadMore = async (page,selector) => {
     }
 }
 
-const scrapeENCA = async (url, filename) => {
+const scrapeENCA = async (url) => {
     const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout:50000 });
@@ -63,8 +63,9 @@ const scrapeENCA = async (url, filename) => {
 
     console.log(topStory, cardNews)
     await browser.close();
-    await fsPromises.writeFile(path.join(__dirname,'..','news','enca',filename),JSON.stringify({ topStory, cardNews }));
     await eventLogger(`${url}`, 'botProgress.txt');
+
+    return { topStory, cardNews }
 }
 
 

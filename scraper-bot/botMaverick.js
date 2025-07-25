@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer'),
     
 
 
-const scrapeMaverick = async (url,filename) => {
+const scrapeMaverick = async (url) => {
     const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -37,8 +37,8 @@ const scrapeMaverick = async (url,filename) => {
     });
     console.log(newsData)
     await browser.close();
-    await fsPromises.writeFile(path.join(__dirname,'..','news', 'maverick',filename), JSON.stringify(newsData));
     await eventLogger(`${url}`, 'botProgress.txt');
+    return newsData;
 };
 
 

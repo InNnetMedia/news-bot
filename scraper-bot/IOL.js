@@ -52,6 +52,8 @@ const scrapeIOL = async (url, filename) => {
     await browser.close();
     await fsPromises.writeFile(path.join(__dirname,'..','news','IOL',filename), JSON.stringify(newsData));
     await eventLogger(`${url}`, 'botProgress.txt');
+    
+    return newsData;
 };
 
 

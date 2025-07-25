@@ -7,3 +7,10 @@ b2e5976d-b089-4ad8-8ef9-f50b774c720d	20250725	06:40:12	https://www.enca.com/opin
 538ea810-31ad-483c-9254-ddae81f40490	20250725	06:40:21	https://www.enca.com
 37da7b5e-c92d-42b6-89c5-5cbb34bf0999	20250725	06:40:30	https://iol.co.za/business
 6adcf9ac-a691-46ca-98ca-620e9c9ab1da	20250725	06:40:39	https://www.dailymaverick.co.za/section/sport
+766dae00-0ce8-4b98-a6c6-2be9e861e874	20250725	22:25:17	https://www.dailymaverick.co.za/section/sport
+32986a20-57f1-4850-ada1-33d4ad6eea97	20250725	22:27:20	https://www.dailymaverick.co.za/section/sport
+c91844b8-50db-486c-a524-d34c6494f3a6	20250725	22:37:11	https://www.dailymaverick.co.za/section/sport
+b71a30b9-ac98-4c82-9ce7-9ddfa981101c	20250725	22:39:18	https://www.enca.com/business
+5720a3c5-0f7c-4437-b71b-6b896291b588	20250725	22:39:45	https://www.enca.com
+f175a52f-6a2c-4f67-8d17-0b9c4e80b230	20250725	22:40:39	https://www.enca.com/news
+fb708293-cbed-4162-b120-ff35e1598253	20250725	22:41:01	https://www.enca.com/lifestyle

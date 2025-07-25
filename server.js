@@ -18,43 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(cors(corsOptions));
-
-const data_news = require('./news/enca/news.json'),
-    data_lifestyle = require('./news/enca/lifestyle.json'),
-    data_business = require('./news/enca/business.json'),
-    data_sports1 = require('./news/enca/sports.json'),
-    data_sports2 = require('./news/maverick/sports.json'),
-    data_top_stories = require('./news/enca/topStories.json');
-    
-
-
-const startInterval = async () => {
-  while (true) {
-    try{
-      await scrapeENCA('https://www.enca.com/news','news.json');
-      await scrapeENCA('https://www.enca.com/lifestyle','lifestyle.json');
-      await scrapeENCA('https://www.enca.com/business','business.json');
-      await scrapeENCA('https://www.enca.com/sports','sports.json');
-      await scrapeENCA('https://www.enca.com/opinion','opinion.json');
-      await topStories('https://www.enca.com','topStories.json');
-      //await scrapeIOL('https://iol.co.za/business','business.json');
-      await scrapeMaverick('https://www.dailymaverick.co.za/section/sport','sports.json');
-    }catch(err){
-      console.log(err);
-      eventLogger(err,'errorLogger.txt');
-    }
-    
-    await new Promise(resolve => setTimeout(resolve, 300000));
-  }
-};
-
-startInterval();
-
+ 
 
 
 app.get('/', async (req ,res) => {
   try{
-    res.status(200).json(data_top_stories);
+    const data = await topStories('https://www.enca.com');
+    res.status(200).json(data);
   }catch(err){
     console.log(err);
     res.status(500);
@@ -63,7 +33,8 @@ app.get('/', async (req ,res) => {
 
 app.get('/news', async (req, res) => {
   try{
-    res.status(200).json(data_news);
+    const data = await scrapeENCA('https://www.enca.com/news')
+    res.status(200).json(data);
   }catch(err){
     console.log(err);
   }
@@ -71,7 +42,8 @@ app.get('/news', async (req, res) => {
 
 app.get('/sports', async (req,res) => {
   try{
-    res.status(200).json({ data_sports1, data_sports2 });
+    const data = await scrapeMaverick('https://www.dailymaverick.co.za/section/sport');
+    res.status(200).json(data);
   }catch(err){
     console.log(err);
     res.status(500);
@@ -80,7 +52,8 @@ app.get('/sports', async (req,res) => {
 
 app.get('/business', async (req,res) => {
   try{
-    res.status(200).json(data_business);
+    const data = await scrapeENCA('https://www.enca.com/business');
+    res.status(200).json(data);
   }catch(err){
     console.error(err);
     res.status(500);
@@ -89,7 +62,8 @@ app.get('/business', async (req,res) => {
 
 app.get('/lifestyle', async (req, res) => {
   try{
-    res.status(200).json(data_lifestyle);
+    const data = await scrapeENCA('https://www.enca.com/lifestyle');
+    res.status(200).json(data);
   }catch(err){
     console.error(err);
     res.status(500);
