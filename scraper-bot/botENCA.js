@@ -12,7 +12,7 @@ const loadMore = async (page,selector) => {
 }
 
 const scrapeENCA = async (url) => {
-    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox'] });
+    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout:50000 });
     await loadMore(page,'.button[title="Load more items"]');

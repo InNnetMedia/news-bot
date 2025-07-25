@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer'),
 
 
 const scrapeMaverick = async (url) => {
-    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox'] });
+    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded' });
     await page.mouse.wheel({deltaY:9000});
