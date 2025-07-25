@@ -10,7 +10,7 @@ puppeteer.use(StealthPlugIn());
 
 
 const scrapeIOL = async (url, filename) => {
-    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox'] });
+    const browser = await puppeteer.launch({ userDataDir: './tmp', headless: true, args:['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded' });
     await page.setExtraHTTPHeaders({
