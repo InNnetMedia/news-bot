@@ -44,7 +44,7 @@ const startInterval = async () => {
       eventLogger(err,'errorLogger.txt');
     }
     
-    await new Promise(resolve => setTimeout(resolve, 300000));
+    await new Promise(resolve => setTimeout(resolve, 3600000));
   }
 };
 
